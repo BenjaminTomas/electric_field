@@ -1,0 +1,34 @@
+import os
+import numpy as np
+os.system("cls")
+
+
+
+#Positions and charges:
+p1=np.array([0,0,0,5]) #[meters,meters,meters,Coulomb]
+p2=np.array([2,2,3,2]) #[meters,meters,meters,Coulomb]
+p3=np.array([-1,5,4,15])
+
+charges=np.vstack([p1,p2,p3])
+
+
+#Point where to calculate electric field
+point=np.array([1,0,0]) #[meters,meters,meters,Coulomb]
+
+#Variable to define the magnetic field
+E=0
+
+
+for i in range(charges.shape[0]):
+    vector=point-charges[i,0:3] #Vector point-charge (end-start).
+
+    vector=vector/(np.sqrt(np.sum(vector[0:3]**2))**3) #module 1 versor point-charge (end-start).
+
+    vector=vector*(charges[i,3]) #contribution of every charge to the electric field. 
+
+    E=E+vector
+
+E=E*(1/(4*np.pi*8.85*10**(-12)))
+E=np.round(E,2)
+
+print(f"{E} [Volt/meters]")  
