@@ -4,8 +4,6 @@ import numpy as np
 os.system("cls")
 
 
-
-
 def electric_field_calculator(source_points,field_point):
     #Point where to calculate electric field.
     
@@ -31,4 +29,4 @@ def electric_field_calculator(source_points,field_point):
 
 
 
-    return E
+    return field_point, E
